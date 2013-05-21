@@ -22,9 +22,9 @@ namespace GiveIT.UI.Web
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //OAuthWebSecurity.RegisterFacebookClient(
-            //    appId: "",
-            //    appSecret: "");
+            OAuthWebSecurity.RegisterFacebookClient(
+                appId: "399972000117428",
+                appSecret: "39e2b750d0893253b4236449816d4b2f");
 
             //OAuthWebSecurity.RegisterGoogleClient();
         }
