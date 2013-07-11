@@ -25,6 +25,7 @@ namespace GiveIT.UI.Web.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+
     }
 
     public class RegisterExternalLoginModel
@@ -34,6 +35,8 @@ namespace GiveIT.UI.Web.Models
         public string UserName { get; set; }
 
         public string ExternalLoginData { get; set; }
+
+        public string EmailAddress { get; set; }
     }
 
     public class LocalPasswordModel

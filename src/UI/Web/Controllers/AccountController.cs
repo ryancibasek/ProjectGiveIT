@@ -239,9 +239,15 @@ namespace GiveIT.UI.Web.Controllers
                 // User is new, ask for their desired membership name
                 string loginData = OAuthWebSecurity.SerializeProviderUserId(result.Provider, result.ProviderUserId);
                 ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(result.Provider).DisplayName;
-                var x = OAuthWebSecurity.GetOAuthClientData(result.Provider);
                 ViewBag.ReturnUrl = returnUrl;
-                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { UserName = result.UserName, ExternalLoginData = loginData });
+
+                string email;
+                if (!result.ExtraData.TryGetValue("email", out email))
+                {
+                    email = "foo@bar.com";
+                }
+
+                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { UserName = result.UserName, ExternalLoginData = loginData, EmailAddress = email });
             }
         }
 
