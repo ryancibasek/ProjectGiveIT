@@ -238,7 +238,14 @@ namespace GiveIT.UI.Web.Controllers
                 string loginData = OAuthWebSecurity.SerializeProviderUserId(result.Provider, result.ProviderUserId);
                 ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(result.Provider).DisplayName;
                 ViewBag.ReturnUrl = returnUrl;
-                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { UserName = result.UserName, ExternalLoginData = loginData });
+
+                string email;
+                if (!result.ExtraData.TryGetValue("email", out email))
+                {
+                    email = "foo@bar.com";
+                }
+
+                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { UserName = result.UserName, ExternalLoginData = loginData, EmailAddress = email });
             }
         }
 
