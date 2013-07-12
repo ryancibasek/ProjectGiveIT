@@ -8,8 +8,6 @@ using System.Web.Security;
 
 namespace GiveIT.UI.Web.Models
 {
-<<<<<<< HEAD
-=======
     public class UsersContext : DbContext
     {
         public UsersContext() /// This is a test if this is here in the master it didn't work
@@ -30,7 +28,6 @@ namespace GiveIT.UI.Web.Models
 
     }
 
->>>>>>> d63762931e5d11e4ce31ec9f259c1ce7d453f9de
     public class RegisterExternalLoginModel
     {
         [Required]
