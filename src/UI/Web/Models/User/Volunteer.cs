@@ -16,5 +16,7 @@ namespace GiveIT.UI.Web.Models
         [Display(Name = "Skill Set")]
         [StringLength(200)]
         public string SkillSet { get; set; }
+
+        
     }
 }

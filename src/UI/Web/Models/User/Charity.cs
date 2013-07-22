@@ -24,5 +24,25 @@ namespace GiveIT.UI.Web.Models
                ErrorMessage = "EIN entered is not valid. Please try again.")]
         [StringLength(10)]
         public string EIN { get; set; }
+
+        [Display(Name = "Street Address")]
+        [StringLength(80)]
+        public string StreetAddress { get; set; }
+
+        [Display(Name = "Street Address 2")]
+        [StringLength(80)]
+        public string StreetAddress2 { get; set; }
+
+        [StringLength(30)]
+        public string City { get; set; }
+
+        [StringLength(20)]
+        public string State { get; set; }
+
+        [RegularExpression(@"^(\d{5}-\d{4}|\d{5}|\d{9})$|^([a-zA-Z]\d[a-zA-Z] \d[a-zA-Z]\d)$",
+            ErrorMessage = "Please enter a valid zip code consists of 5 or 9 numeric characters.")]
+        [StringLength(10)]
+        [Display(Name = "Zip Code")]
+        public string ZipCode { get; set; }
     }
 }
