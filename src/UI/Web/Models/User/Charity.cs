@@ -25,8 +25,9 @@ namespace GiveIT.UI.Web.Models
         [StringLength(10)]
         public string EIN { get; set; }
 
-        [Display(Name = "Street Address")]
+        [Display(Name = "Street Address*")]
         [StringLength(80)]
+        [Required]
         public string StreetAddress { get; set; }
 
         [Display(Name = "Street Address 2")]
@@ -34,15 +35,20 @@ namespace GiveIT.UI.Web.Models
         public string StreetAddress2 { get; set; }
 
         [StringLength(30)]
+        [Display(Name = "City*")]
+        [Required]
         public string City { get; set; }
 
         [StringLength(20)]
+        [Display(Name = "State*")]
+        [Required]
         public string State { get; set; }
 
         [RegularExpression(@"^(\d{5}-\d{4}|\d{5}|\d{9})$|^([a-zA-Z]\d[a-zA-Z] \d[a-zA-Z]\d)$",
             ErrorMessage = "Please enter a valid zip code consists of 5 or 9 numeric characters.")]
         [StringLength(10)]
-        [Display(Name = "Zip Code")]
+        [Display(Name = "Zip Code*")]
+        [Required]
         public string ZipCode { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using GiveIT.UI.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,24 +29,31 @@ namespace GiveIT.UI.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult RegisterVolunteer(Volunteer model)
+        public ActionResult RegisterVolunteer(HttpPostedFileBase file)
         {
-
-            if (ModelState.IsValid)
+           
+            if (file != null && file.ContentLength > 0)
             {
-                WebSecurity.CreateUserAndAccount(model.UserName, model.Password,
-                    propertyValues: new
-                    {
-                        ContactFirstName = model.ContactFirstName,
-                        ContactLastName = model.ContactLastName,
-                        VolunteerHours = model.VolunteerHours,
-                        PhoneNumber = model.PhoneNumber,
-                        PhoneNoExtension = model.PhoneNoExtension,
-                        EmailAddress = model.EmailAddress
-                    });
-
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                file.SaveAs(path);
             }
-            return View(model);
+    
+            //if (ModelState.IsValid)
+            //{
+            //    WebSecurity.CreateUserAndAccount(model.UserName, model.Password,
+            //        propertyValues: new
+            //        {
+            //            ContactFirstName = model.ContactFirstName,
+            //            ContactLastName = model.ContactLastName,
+            //            VolunteerHours = model.VolunteerHours,
+            //            PhoneNumber = model.PhoneNumber,
+            //            PhoneNoExtension = model.PhoneNoExtension,
+            //            EmailAddress = model.EmailAddress
+            //        });
+
+            //}
+            return View();
         }
     }
 }
